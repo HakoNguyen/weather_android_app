@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="8dp">
+
+    <TextView
+        android:id="@+id/tvDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="26 thg 10 Hôm nay"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/ivWeatherIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_sunny"
+        android:layout_marginHorizontal="16dp"/>
+
+    <TextView
+        android:id="@+id/tvTempRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22° / 28°"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

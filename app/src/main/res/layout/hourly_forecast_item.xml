@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23:00"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/ivWeatherIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_cloudy"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24°"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>
