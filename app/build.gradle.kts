@@ -16,6 +16,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -33,9 +38,6 @@ android {
 
 dependencies {
 
-    implementation("io.socket:socket.io-client:2.1.0") {
-        exclude(group = "org.json", module = "json")
-    }
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -45,8 +47,17 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+// RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+// CardView
+    implementation("androidx.cardview:cardview:1.0.0")
+// Retrofit (cho Networking)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.squareup.moshi:moshi:1.13.0")
-    implementation("com.squareup.moshi:moshi-adapters:1.13.0")
+// GSON Converter (QUAN TRỌNG: Thay thế Moshi)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+// GSON Library
+    implementation("com.google.code.gson:gson:2.10.1")
 }

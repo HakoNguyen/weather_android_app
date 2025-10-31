@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/card_background_dark">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="2"
+        android:padding="8dp"
+        android:useDefaultMargins="true">
+
+        <!-- UV Index --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailUv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+        <!-- Nhiệt độ cảm nhận --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailFeelsLike"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+        <!-- Độ ẩm --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailHumidity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+        <!-- Gió --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailWind"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+        <!-- Áp suất --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailPressure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+        <!-- Tầm nhìn --><include layout="@layout/item_weather_detail"
+        android:id="@+id/detailVisibility"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1" />
+
+    </GridLayout>
+</androidx.cardview.widget.CardView>

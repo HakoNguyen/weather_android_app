@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">weather_app</string>
+    <string name="app_name">Weather-App</string>
+    <!-- Thêm các mô tả nội dung này cho trợ năng -->
+    <string name="location_icon_description">Location Icon</string>
+    <string name="settings_icon_description">Settings</string>
+    <string name="weather_icon_description">Weather Icon</string>
+    <string name="weather_provider_logo">Weather Provider Logo</string>
+    <string name="detail_icon_description">Detail Icon</string>
+    <string name="sunset_icon_description">Sunset Icon</string>
+    <string name="sunrise_icon_description">Sunrise Icon</string>
 </resources>

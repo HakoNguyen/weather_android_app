@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingVertical="16dp"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/rounded_card_background" >
+
+    <TextView
+        android:id="@+id/tvCurrentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25°"
+        android:textColor="@color/white"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCurrentCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Có mây 22° / 28°"
+        android:textColor="@color/white_alpha_80"
+        android:textSize="18sp"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>

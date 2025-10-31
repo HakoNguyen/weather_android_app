@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Màu sắc cho giao diện thời tiết tối --><color name="weather_background_dark">#121212</color> <!-- Nền tổng thể rất tối --><color name="card_background_dark">#1E1E1E</color>   <!-- Nền card hơi sáng hơn nền tổng thể --><color name="blue_accent">#42A5F5</color>           <!-- Màu xanh làm điểm nhấn --><!-- Các màu trắng có độ trong suốt khác nhau --><color name="white_alpha_80">#CCFFFFFF</color>
+    <color name="white_alpha_60">#99FFFFFF</color>
+    <color name="white_alpha_30">#4DFFFFFF</color>
 </resources>

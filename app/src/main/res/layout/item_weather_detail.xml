@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/ivDetailIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_uv_index"
+        app:tint="@color/white_alpha_80"
+        android:contentDescription="@string/detail_icon_description" />
+
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UV"
+        android:textColor="@color/white_alpha_80"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvDetailValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tvDetailUnitOrDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rất yếu"
+        android:textColor="@color/white_alpha_60"
+        android:textSize="10sp" />
+
+</LinearLayout>

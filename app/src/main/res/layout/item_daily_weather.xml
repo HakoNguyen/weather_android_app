@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <TextView
+        android:id="@+id/tvDailyDate"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        tools:text="28 thg 10 Thứ 3"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/ivDailyIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        tools:src="@drawable/ic_cloudy"
+        app:tint="@color/white" />
+
+
+    <TextView
+        android:id="@+id/tvDailyTempRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="20° / 27°"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold" />
+
+</LinearLayout>
