@@ -20,9 +20,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class MainActivity extends AppCompatActivity {
-    private static final  String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
     private ActivityMainBinding binding;
 
     private WeatherService weatherService;
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.searchView.clearFocus();
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchWeatherData(String cityName) {
-        if(cityName == null || cityName.isEmpty()) {
+        if (cityName == null || cityName.isEmpty()) {
             Toast.makeText(this, "Enter city name:", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
 
                     if (response.body().isEmpty()) {
-                        Toast.makeText(MainActivity.this, "Không tìm thấy dữ liệu cho thành phố này", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Không tìm thấy dữ liệu cho thành phố này",
+                                Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -118,9 +119,11 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     Log.e(TAG, "Error fetching hourly weather data: " + response.message());
-                    Toast.makeText(MainActivity.this, "Lỗi máy chủ (hourly): " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Lỗi máy chủ (hourly): " + response.message(), Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<HourlyResponse>> call, Throwable t) {
                 Log.e(TAG, "Hourly API call failed", t);
@@ -149,9 +152,11 @@ public class MainActivity extends AppCompatActivity {
                     binding.includeSunMoon.getRoot().setVisibility(View.GONE);
                 } else {
                     Log.e(TAG, "Error fetching daily weather data: " + response.message());
-                    Toast.makeText(MainActivity.this, "Lỗi máy chủ (daily): " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Lỗi máy chủ (daily): " + response.message(), Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
+
             @Override
             public void onFailure(Call<List<DailyResponse>> call, Throwable t) {
                 Log.e(TAG, "Daily API call failed", t);
@@ -166,8 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     String.format(Locale.getDefault(), "%s  %.0f° / %.0f°",
                             currentConditionText,
                             currentDayData.getTempMin(),
-                            currentDayData.getTempMax())
-            );
+                            currentDayData.getTempMax()));
             currentConditionText = null;
             currentDayData = null;
         }
@@ -183,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
         uv.tvDetailTitle.setText("UV");
         uv.ivDetailIcon.setImageResource(R.drawable.ic_uv_index);
-        uv.tvDetailValue.setText(String.valueOf(currentHour.getUvIndex()));
+        uv.tvDetailValue.setText(String.format(Locale.getDefault(), "%.2f", currentHour.getUvIndex()));
         uv.tvDetailUnitOrDescription.setText(getUvDescription(currentHour.getUvIndex()));
 
         feelsLike.tvDetailTitle.setText("Lượng mưa");
@@ -208,16 +212,21 @@ public class MainActivity extends AppCompatActivity {
 
         visibility.tvDetailTitle.setText("Tầm nhìn");
         visibility.ivDetailIcon.setImageResource(R.drawable.ic_visibility);
-        visibility.tvDetailValue.setText(String.format(Locale.getDefault(), "%d km", currentHour.getVisibility()));
+        // API visibility is in meters; convert to kilometers for display
+        double visibilityKm = currentHour.getVisibility() / 1000.0;
+        visibility.tvDetailValue.setText(String.format(Locale.getDefault(), "%.0f km", visibilityKm));
         visibility.tvDetailUnitOrDescription.setVisibility(View.GONE);
     }
 
-    private String getUvDescription(int uvIndex) {
-        if (uvIndex <= 2) return "Rất yếu";
-        if (uvIndex <= 5) return "Vừa";
-        if (uvIndex <= 7) return "Cao";
-        if (uvIndex <= 10) return "Rất cao";
+    private String getUvDescription(float uvIndex) {
+        if (uvIndex <= 2f)
+            return "Rất yếu";
+        if (uvIndex <= 5f)
+            return "Vừa";
+        if (uvIndex <= 7f)
+            return "Cao";
+        if (uvIndex <= 10f)
+            return "Rất cao";
         return "Cực cao";
     }
 }
-

@@ -17,7 +17,7 @@ public class HourlyResponse {
     private int cloudCover;
 
     @SerializedName("uv_index")
-    private int uvIndex;
+    private float uvIndex;
 
     @SerializedName("humidity")
     private int humidity;
@@ -40,17 +40,51 @@ public class HourlyResponse {
     @SerializedName("rain")
     private float rain;
 
-    public String getTime() { return time; }
-    public float getTemperature() { return temperature; }
-    public String getWeather() { return weather; }
-    public int getCloudCover() { return cloudCover; }
-    public int getUvIndex() { return uvIndex; }
-    public int getHumidity() { return humidity; }
-    public float getWindSpeed() { return windSpeed; }
-    public String getWindDirection() { return windDirection; }
-    public int getWindDegree() { return windDegree; }
-    public float getPressure() { return pressure; }
-    public int getVisibility() { return visibility; }
-    public float getRain() { return rain; }
-}
+    public String getTime() {
+        return time;
+    }
 
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public int getCloudCover() {
+        return cloudCover;
+    }
+
+    public float getUvIndex() {
+        return uvIndex;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public float getWindSpeed() {
+        return windSpeed;
+    }
+
+    public String getWindDirection() {
+        return windDirection;
+    }
+
+    public int getWindDegree() {
+        return windDegree;
+    }
+
+    public float getPressure() {
+        return pressure;
+    }
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public float getRain() {
+        return rain;
+    }
+}

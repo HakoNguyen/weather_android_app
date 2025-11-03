@@ -9,12 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Locale;
 
 public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdapter.ViewHolder> {
 
     private List<HourlyResponse> hourlyWeatherList;
+
     public HourlyWeatherAdapter(List<HourlyResponse> hourlyWeatherList) {
         this.hourlyWeatherList = hourlyWeatherList;
     }
@@ -36,12 +41,44 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HourlyResponse item = hourlyWeatherList.get(position);
-
-        holder.tvTime.setText(item.getTime());
+        holder.tvTime.setText(formatTime(item.getTime()));
         holder.tvTemp.setText(String.format(Locale.getDefault(), "%.0f°", item.getTemperature()));
 
-
         holder.ivIcon.setImageResource(getWeatherIcon(item.getWeather()));
+    }
+
+    private String formatTime(String isoTime) {
+        if (isoTime == null || isoTime.isEmpty())
+            return "--:--";
+
+        // Try parse as LocalDateTime (ISO_LOCAL_DATE_TIME like 2025-11-04T00:00)
+        try {
+            LocalDateTime dt = LocalDateTime.parse(isoTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            DateTimeFormatter timeFmt = DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault());
+            DateTimeFormatter dateFmt = DateTimeFormatter.ofPattern("dd/MM", Locale.getDefault());
+
+            String timePart = dt.format(timeFmt);
+            // If the date differs from today, append date on a second line (keeps compact)
+            if (!dt.toLocalDate().equals(LocalDate.now())) {
+                return String.format(Locale.getDefault(), "%s\n%s", timePart, dt.format(dateFmt));
+            }
+            return timePart;
+        } catch (DateTimeParseException ignored) {
+            // fallback: attempt to handle ISO with zone or just extract after 'T'
+            try {
+                int tIndex = isoTime.indexOf('T');
+                if (tIndex >= 0 && tIndex + 1 < isoTime.length()) {
+                    String afterT = isoTime.substring(tIndex + 1);
+                    // If contains seconds, trim to HH:mm
+                    if (afterT.length() >= 5)
+                        return afterT.substring(0, 5);
+                    return afterT;
+                }
+            } catch (Exception e) {
+                // ignore and fallthrough
+            }
+        }
+        return isoTime;
     }
 
     @Override
@@ -50,17 +87,18 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     }
 
     private int getWeatherIcon(String weatherCondition) {
-        if (weatherCondition == null) return R.drawable.ic_cloudy;
+        if (weatherCondition == null)
+            return R.drawable.ic_cloudy;
 
         weatherCondition = weatherCondition.toLowerCase(Locale.ROOT);
 
-        String[] sunKeyWords = {"trời quang", "nắng"};
-        String[] sunCloudKeyWords = {"gần như quang", "có mây", "dễ chịu"};
-        String[] fogKeyWords = {"nhiều mây", "sương mù", "sương muối"};
-        String[] rainKeyWords = {"mưa phùn nhẹ", "mưa phùn vừa", "mưa nhỏ", "mưa rào nhẹ"};
-        String[] heavyRainKeyWords = {"mưa phùn dày", "mưa vừa", "mưa to", "mưa rào to"};
-        String[] snowKeyWords = {"tuyết", "mưa đóng băng"};
-        String[] stormKeyWords = {"dông", "sấm chớp", "bão"};
+        String[] sunKeyWords = { "trời quang", "nắng" };
+        String[] sunCloudKeyWords = { "gần như quang", "có mây", "dễ chịu" };
+        String[] fogKeyWords = { "nhiều mây", "sương mù", "sương muối" };
+        String[] rainKeyWords = { "mưa phùn nhẹ", "mưa phùn vừa", "mưa nhỏ", "mưa rào nhẹ" };
+        String[] heavyRainKeyWords = { "mưa phùn dày", "mưa vừa", "mưa to", "mưa rào to" };
+        String[] snowKeyWords = { "tuyết", "mưa đóng băng" };
+        String[] stormKeyWords = { "dông", "sấm chớp", "bão" };
 
         if (containsAny(weatherCondition, stormKeyWords))
             return R.drawable.ic_storm;
@@ -79,7 +117,6 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
 
         return R.drawable.ic_cloudy;
     }
-
 
     private boolean containsAny(String text, String[] keywords) {
         for (String keyword : keywords) {
