@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="32dp"
+    android:viewportWidth="120"
+    android:viewportHeight="32">
+    
+    <!-- Icon thời tiết - Mặt trời + Mây kết hợp -->
+    <group>
+        <!-- Mặt trời (vẽ bằng path) -->
+        <path
+            android:fillColor="#FFD700"
+            android:pathData="M14,16 m-6,0 a6,6 0 1,1 12,0 a6,6 0 1,1 -12,0" />
+        
+        <!-- Tia nắng -->
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="1.5"
+            android:pathData="M14,10 L14,6" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="1.5"
+            android:pathData="M14,22 L14,26" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="1.5"
+            android:pathData="M8,16 L4,16" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="1.5"
+            android:pathData="M20,16 L24,16" />
+    </group>
+    
+    <!-- Mây che một phần mặt trời -->
+    <group android:translateX="18">
+        <path
+            android:fillColor="#E0E0E0"
+            android:pathData="M2,12 Q2,10 4,10 L7,10 Q9,10 9,12 Q11,12 11,14 Q11,16 9,16 L4,16 Q2,16 2,14 Q2,12 2,12 Z" />
+        <path
+            android:fillColor="#E0E0E0"
+            android:pathData="M12,14 m-2.5,0 a2.5,2.5 0 1,1 5,0 a2.5,2.5 0 1,1 -5,0" />
+    </group>
+    
+</vector>

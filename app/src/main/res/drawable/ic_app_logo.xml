@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="40dp"
+    android:viewportWidth="120"
+    android:viewportHeight="40">
+    
+    <!-- Mặt trời -->
+    <group>
+        <path
+            android:fillColor="#FFD700"
+            android:pathData="M20,20 m-12,0 a12,12 0 1,1 24,0 a12,12 0 1,1 -24,0" />
+        <!-- Tia nắng -->
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="2"
+            android:pathData="M20,8 L20,2" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="2"
+            android:pathData="M20,32 L20,38" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="2"
+            android:pathData="M8,20 L2,20" />
+        <path
+            android:strokeColor="#FFD700"
+            android:strokeWidth="2"
+            android:pathData="M32,20 L38,20" />
+    </group>
+    
+    <!-- Mây -->
+    <group android:translateX="30">
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M5,15 Q5,10 10,10 L15,10 Q20,10 20,15 Q25,15 25,20 Q25,25 20,25 L10,25 Q5,25 5,20 Q5,15 5,15 Z" />
+    </group>
+    
+</vector>

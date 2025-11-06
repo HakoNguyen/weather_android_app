@@ -14,9 +14,16 @@ import java.util.Locale;
 
 public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapter.ViewHolder> {
     private List<DailyResponse> dailyWeatherList;
+    private boolean isFahrenheit;
 
     public DailyWeatherAdapter(List<DailyResponse> dailyWeatherList) {
         this.dailyWeatherList = dailyWeatherList;
+        this.isFahrenheit = false; // Default
+    }
+
+    public void setIsFahrenheit(boolean isFahrenheit) {
+        this.isFahrenheit = isFahrenheit;
+        notifyDataSetChanged();
     }
     public void updateData(List<DailyResponse> newDailyWeatherList) {
         if (this.dailyWeatherList != null) {
@@ -40,8 +47,12 @@ public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapte
 
         holder.tvDate.setText(item.getDate());
 
-        holder.tvTempRange.setText(String.format(Locale.getDefault(), "%.0f° / %.0f°",
-                item.getTempMin(), item.getTempMax()));
+        // Sử dụng TemperatureUtils để format nhiệt độ
+        String minTemp = TemperatureUtils.formatTemperature(item.getTempMin(), isFahrenheit);
+        String maxTemp = TemperatureUtils.formatTemperature(item.getTempMax(), isFahrenheit);
+        minTemp = minTemp.replace("°C", "°").replace("°F", "°");
+        maxTemp = maxTemp.replace("°C", "°").replace("°F", "°");
+        holder.tvTempRange.setText(String.format(Locale.getDefault(), "%s / %s", minTemp, maxTemp));
 
         holder.ivIcon.setImageResource(getWeatherIcon(item.getWeather()));
 

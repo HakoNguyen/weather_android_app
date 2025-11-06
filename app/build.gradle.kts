@@ -60,4 +60,13 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 // GSON Library
     implementation("com.google.code.gson:gson:2.10.1")
+// Google Play Services Location
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+// OpenStreetMap - OSMDroid (100% FREE, không cần API key)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation("org.osmdroid:osmdroid-wms:6.1.18")
+// SwipeRefreshLayout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+// MPAndroidChart - Biểu đồ nhiệt độ
+    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }

@@ -11,6 +11,25 @@
     android:layout_marginTop="16dp"
     android:background="@drawable/rounded_card_background" >
 
+    <!-- Giờ hiện tại -->
+    <TextView
+        android:id="@+id/tvCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="14:30"
+        android:textColor="@color/white_alpha_60"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Icon thời tiết với animation -->
+    <ImageView
+        android:id="@+id/ivCurrentWeatherIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="8dp"
+        tools:src="@drawable/ic_sun"
+        app:tint="@color/white" />
+
     <TextView
         android:id="@+id/tvCurrentTemp"
         android:layout_width="wrap_content"

@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:usesCleartextTraffic="true"
@@ -24,5 +27,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".FavoriteCitiesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WeatherApp"
+            android:parentActivityName=".MainActivity" />
+            
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WeatherApp"
+            android:parentActivityName=".MainActivity" />
+            
+        <activity
+            android:name=".MapActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WeatherApp"
+            android:parentActivityName=".MainActivity" />
+            
+        <!-- OSMDroid Configuration -->
+        <meta-data android:name="osmdroid.basePath" android:value="/osmdroid" />
+        <meta-data android:name="osmdroid.configuration" android:value="/osmdroid" />
+        
+        <!-- Widget Receiver -->
+        <receiver
+            android:name=".WeatherWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_weather_info" />
+        </receiver>
     </application>
 </manifest>

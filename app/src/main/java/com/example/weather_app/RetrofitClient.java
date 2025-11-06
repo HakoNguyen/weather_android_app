@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private static Retrofit retrofit = null;
 
-    private static final String BASE_URL = "https://lows-discipline-converter-livecam.trycloudflare.com/";
+    private static final String BASE_URL = "https://weather.sangtd.workers.dev/";
 
     public static WeatherService getApiService() {
         if (retrofit == null) {

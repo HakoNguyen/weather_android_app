@@ -19,9 +19,16 @@ import java.util.Locale;
 public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdapter.ViewHolder> {
 
     private List<HourlyResponse> hourlyWeatherList;
+    private boolean isFahrenheit;
 
     public HourlyWeatherAdapter(List<HourlyResponse> hourlyWeatherList) {
         this.hourlyWeatherList = hourlyWeatherList;
+        this.isFahrenheit = false; // Default
+    }
+
+    public void setIsFahrenheit(boolean isFahrenheit) {
+        this.isFahrenheit = isFahrenheit;
+        notifyDataSetChanged();
     }
 
     public void updateData(List<HourlyResponse> hourlyWeatherList) {
@@ -42,7 +49,11 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HourlyResponse item = hourlyWeatherList.get(position);
         holder.tvTime.setText(formatTime(item.getTime()));
-        holder.tvTemp.setText(String.format(Locale.getDefault(), "%.0f°", item.getTemperature()));
+        
+        // Sử dụng TemperatureUtils để format nhiệt độ
+        String tempText = TemperatureUtils.formatTemperature(item.getTemperature(), isFahrenheit);
+        tempText = tempText.replace("°C", "°").replace("°F", "°");
+        holder.tvTemp.setText(tempText);
 
         holder.ivIcon.setImageResource(getWeatherIcon(item.getWeather()));
     }

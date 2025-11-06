@@ -87,4 +87,19 @@ public class HourlyResponse {
     public float getRain() {
         return rain;
     }
+
+    @Override
+    public String toString() {
+        return "HourlyResponse{" +
+                "time='" + time + '\'' +
+                ", temperature=" + temperature +
+                ", weather='" + weather + '\'' +
+                ", uvIndex=" + uvIndex +
+                ", rain=" + rain +
+                ", humidity=" + humidity +
+                ", windSpeed=" + windSpeed +
+                ", pressure=" + pressure +
+                ", visibility=" + visibility +
+                '}';
+    }
 }
